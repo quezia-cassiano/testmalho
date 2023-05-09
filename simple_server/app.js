@@ -5,17 +5,16 @@ cors = require('cors'),
 mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/mean', { useNewUrlParser: true }).then(
+mongoose.connect('mongodb://localhost:27017/sneakercrud', { useNewUrlParser: true, useUnifiedTopology: true }).then(
   () => {console.log('Server Online') },
   err => { console.log('Damn, that must be something wrong...'+ err)});
 
-const userRoute = require('./routes/user.route');
+const sneakerRoutes = require('./routes/sneakers.route');
 var app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/user', userRoute);
-app.use('/industry', industryRoute);
+app.use('/sneaker', sneakerRoutes);
 app.get('/', function(req, res){
    res.send("Salve, Rapaziada!");
 });

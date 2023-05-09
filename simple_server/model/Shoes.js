@@ -1,12 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Shoes = mongoose.model('Shoes',{
-    name: String,
-    brand: String,
-    size: Number,
-})
+let Sneakers = new Schema({
+  name: {
+    type: String
+  },
+  brand: {
+    type: String
+  },
+  size: {
+    type: Number
+  }
+},
+{
+    collection: 'sneakers'
+});
 
-module.exports = Shoes
-
-module.exports = mongoose.model('Shoes', Shoes);
+module.exports = mongoose.model('Sneakers', Sneakers);
